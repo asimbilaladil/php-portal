@@ -39,7 +39,7 @@
 
 <body class="glossed">
 
-<div class="all-wrapper no-menu-wrapper light-bg scrolling">
+<div class="all-wrapper no-menu-wrapper light-bg">
   <div class="login-logo-w">
     <a href="index.html" class="logo">
       <i class="fa fa-rocket"></i>

@@ -2,6 +2,15 @@
 
 include("connection.php");
 
+/*
+ *  Generate randon key for user
+ */
+
+function generateKey (){
+
+    $randomString = substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, 15);
+    return $randomString;
+}
 
 if( isset( $_POST["submit"] ) ) {
     
@@ -14,6 +23,7 @@ if( isset( $_POST["submit"] ) ) {
     $password = $_POST["password"];
     $firstName = $_POST["firstName"];
     $lastName = $_POST["lastName"];
+    $userKey = generateKey();
     
     /*
      *  Select query to check username exists or not in user table
@@ -29,8 +39,8 @@ if( isset( $_POST["submit"] ) ) {
          *  Insert query for user table  
          */
         
-        $sql = "INSERT INTO user (firstName, lastName, email, password, username)
-        VALUES ('$firstName', '$lastName', '$email', '$password', '$username' )";
+        $sql = "INSERT INTO user (firstName, lastName, email, password, username, userKey)
+        VALUES ('$firstName', '$lastName', '$email', '$password', '$username', '$userKey' )";
 
 
         /*
@@ -39,7 +49,7 @@ if( isset( $_POST["submit"] ) ) {
         
         if ($conn->query($sql) === TRUE) {
 
-           header("Location: ../login.php"); 
+            header("Location: ../login.php"); 
 
         } else {
 

@@ -32,8 +32,9 @@
                 <td><span class="label label-warning">Pending</span></td>
                 <?php  } ?>
                 <td class="text-right">
-                   <a href="#" class="btn btn-default btn-xs">edit</a>
-                <a href="#" class="btn btn-danger btn-xs remove-tr"><i class="fa fa-times"></i></a>
+                   <a href="updateUser.php?userKey=<?php echo $user[4]; ?>" class="btn btn-default btn-xs">edit</a>
+                <a href="deleteController.php?userKey=<?php echo $user[4]; ?>" class="btn btn-danger btn-xs remove-tr"><i class="fa fa-times"></i></a>
+                
                 </td>
               </tr>
               <?php } ?>
