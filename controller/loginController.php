@@ -23,8 +23,14 @@ if( isset( $_POST["submit"] ) ) {
     if ($result->num_rows > 0) {
 
         while($row = $result->fetch_assoc()) {
+            session_start();
+            $_SESSION['username'] = $row["username"] ;
+            $_SESSION['fullname'] = $row["firstName"] . " " . $row["lastName"]  ;
+            $_SESSION['email'] = $row["email"];
+            $_SESSION['userId'] = $row["user_id"];
+            $_SESSION['type'] = $row["type"];
+       		header("Location: ../index.php"); 
 
-       		header("Location: dasboard.php"); 
     	
     	}
 
@@ -34,7 +40,7 @@ if( isset( $_POST["submit"] ) ) {
          */
     } else {
 
-      header("Location: login.php?errorMessage=invalid"); 
+      header("Location: ../login.html?errorMessage=invalid"); 
 
     }
 

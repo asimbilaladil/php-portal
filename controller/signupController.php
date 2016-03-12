@@ -39,7 +39,7 @@ if( isset( $_POST["submit"] ) ) {
         
         if ($conn->query($sql) === TRUE) {
 
-           header("Location: login.php"); 
+           header("Location: ../login.php"); 
 
         } else {
 
