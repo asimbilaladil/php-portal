@@ -1,4 +1,9 @@
-
+<?php 
+session_start();
+if( !empty( $_SESSION )){
+    header("Location: index.php"); 
+}
+?>
 <!DOCTYPE html>
 <html>
 
@@ -77,7 +82,7 @@
             </input>
 
             <div class="no-account-yet">
-              Don't have an account yet? <a href="signup.html">Register Now</a>
+              Don't have an account yet? <a href="signup.php">Register Now</a>
             </div>
           </form>
         </div>

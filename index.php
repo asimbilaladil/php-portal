@@ -1,52 +1,55 @@
 <?php
- include("controller/dashboardController.php");
- include("header.php");
+
+//include("controller/profileController.php");
+include("header.php");
+
 ?>
+<div class="main-content">
+    <ol class="breadcrumb">
+  <li><a href="index.php">Home</a></li>
+</ol>
 
-<div class="widget widget-blue">
-      <div class="widget-title">
+<div class="col-md-6 col-md-offset-3 scrolling">
+        <div class="widget widget-blue">
+          <div class="widget-title">
+            <h3><i class="fa fa-table"></i> Time-Clock  Attandence</h3>
+          </div>
+          <div class="clearfix">
+</div>
+          <div class="widget-content">
+   
+            <div class="table-responsive">
+                        <div class="form-group">
+              <div class="checkbox">
+  
+              </div>
+            </div>
+            <table class="table">
+              <thead>
+                  <tr>
+                  <td>Username:</td>
+                  <td> <?php echo $_SESSION['username'];?></td>
 
-        <h3><i class="fa fa-table"></i>  Employee Records</h3>
-      </div>
-      <div class="widget-content">
-        <div class="table-responsive">
-          <table class="table table-bordered table-hover">
-            <thead>
-              <tr>
-                <th>ID</th>
-                <th>Full Name</th>
-                <th>Username</th>
-                <th>Status</th>
-                <th>Control</th>
-              </tr>
-            </thead>
-            <tbody>
-            <?php foreach ( $userRecords as $user ) { ?>
-              <tr>
-                <td><?php echo "1"; ?></td>
-                <td><?php echo $user[0] ." ". $user[1] ; ?></td>
-                <td class="text-left"><?php echo $user[3]; ?></td>
-                <?php if(!empty($user[2])) { ?>
-                <td><span class="label label-success">Active</span></td>
-                <?php  } else { ?>
-                <td><span class="label label-warning">Pending</span></td>
-                <?php  } ?>
-                <td class="text-right">
-                   <a href="updateUser.php?userKey=<?php echo $user[4]; ?>" class="btn btn-default btn-xs">edit</a>
-                <a href="deleteController.php?userKey=<?php echo $user[4]; ?>" class="btn btn-danger btn-xs remove-tr"><i class="fa fa-times"></i></a>
-                
-                </td>
-              </tr>
-              <?php } ?>
+                </tr>       
+              </thead>
 
-            </tbody>
-          </table>
+              <tbody>
+                <tr>
+                    <td></td>
+                    <td></td>
+                </tr>
+              </tbody>
+            </table>
+                        <div class="form-group">
+              <div class="checkbox">
+  
+              </div>
+            </div>
+            <button type="button" class="btn btn-normal">Clock-In</button>
+          </div>
+          </div>
         </div>
       </div>
-    </div>
-
-
-
 
   </div>
 

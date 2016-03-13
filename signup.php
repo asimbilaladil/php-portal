@@ -1,4 +1,9 @@
-
+<?php 
+session_start();
+if( !empty( $_SESSION )){
+    header("Location: index.php"); 
+}
+?>
 <!DOCTYPE html>
 <html>
 
@@ -84,7 +89,7 @@
               
            
             <div class="no-account-yet">
-              Already have an account? <a href="login.html">Login</a>
+              Already have an account? <a href="login.php">Login</a>
             </div>
           </form>
         </div>

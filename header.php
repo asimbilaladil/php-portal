@@ -1,5 +1,8 @@
 <?php 
 session_start();
+if( empty( $_SESSION ) ){
+    header("Location: login.php"); 
+}
 
 ?>
 <!DOCTYPE html>
@@ -37,7 +40,7 @@ session_start();
     <div class="dropdown hidden-sm hidden-xs">
       <ul class="dropdown-menu dropdown-inbar">
         <li><a href="profile.php"><i class="fa  fa-user"></i> Profile</a></li>
-        <li><a href="#"><i class="fa fa-power-off"></i> Logout</a></li>
+        <li><a href="controller/logoutController.php"><i class="fa fa-power-off"></i> Logout</a></li>
       </ul>
     </div>
 
@@ -53,7 +56,7 @@ session_start();
       </a>
       <ul class="dropdown-menu dropdown-inbar">
         <li><a href="profile.php"><i class="fa fa-user"></i> Profile</a></li>
-        <li><a href="#"><i class="fa fa-power-off"></i> Logout</a></li>
+        <li><a href="controller/logoutController.php"><i class="fa fa-power-off"></i> Logout</a></li>
       </ul>
     </div>
   </div>
@@ -70,23 +73,23 @@ session_start();
       </a>
     </li>
     <li>
-      <a href="forms.html" data-toggle="tooltip" data-placement="right" title="" data-original-title="Forms">
-        <i class="fa fa-file-text-o"></i>
+      <a href="user.php" data-toggle="tooltip" data-placement="right" title="" data-original-title="Forms">
+        <i class="fa  fa-user-md"></i>
       </a>
     </li>
     <li>
-      <a href="elements.html" data-toggle="tooltip" data-placement="right" title="" data-original-title="UI Elements">
+      <a href="#" data-toggle="tooltip" data-placement="right" title="" data-original-title="UI Elements">
         <span class="badge"></span>
-        <i class="fa fa-code-fork"></i>
+        <i class="fa  fa-clock-o"></i>
       </a>
     </li>
     <li>
-      <a href="charts.html" data-toggle="tooltip" data-placement="right" title="" data-original-title="Charts">
+      <a href="#" data-toggle="tooltip" data-placement="right" title="" data-original-title="Charts">
         <i class="fa fa-bar-chart-o"></i>
       </a>
     </li>
     <li>
-      <a href="table.html" data-toggle="tooltip" data-placement="right" title="" data-original-title="Tables">
+      <a href="#" data-toggle="tooltip" data-placement="right" title="" data-original-title="Tables">
         <i class="fa fa-th"></i>
       </a>
     </li>
@@ -96,8 +99,3 @@ session_start();
 
   </div>
 
-  <div class="main-content">
-    <ol class="breadcrumb">
-  <li><a href="index.php">Home</a></li>
-  <li class="active">Profile</li>
-</ol>

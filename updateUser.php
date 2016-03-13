@@ -8,9 +8,11 @@ $indexNo = getUser();
 
 ?>
 
-
-
-
+<div class="main-content">
+    <ol class="breadcrumb">
+  <li><a href="index.php">Home</a></li>
+  <li class="active">Edit User</li>
+</ol>
 <div class="col-md-6 col-md-offset-3 scrolling" >
         <div class="widget widget-blue">
           <div class="widget-title">

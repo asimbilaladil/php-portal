@@ -1,19 +1,20 @@
 <?php
 
-//include("controller/profileController.php");
 include("header.php");
-
+include("controller/userInformationController.php");
+$userRecords =  $_SESSION['userRecords'];
+$indexNo = getUser();
 ?>
 <div class="main-content">
     <ol class="breadcrumb">
   <li><a href="index.php">Home</a></li>
-  <li class="active">Profile</li>
+  <li class="active">User Information</li>
 </ol>
 
 <div class="col-md-6 col-md-offset-3 scrolling">
         <div class="widget widget-blue">
           <div class="widget-title">
-            <h3><i class="fa fa-table"></i> Profile Information</h3>
+            <h3><i class="fa fa-table"></i> User Information</h3>
           </div>
           <div class="clearfix">
 </div>
@@ -27,27 +28,27 @@ include("header.php");
               <tbody>
                 <tr>
                   <td>Full Name</td>
-                  <td><?php echo $_SESSION['fullname'];?></td>
+                  <td><?php echo $userRecords[$indexNo][0] ; ?></td>
 
                 </tr>
                 <tr>
                   <td>Username</td>
-                  <td><?php echo $_SESSION['username'];?></td>
+                  <td><?php echo $userRecords[$indexNo][3] ; ?></td>
 
                 </tr>
                 <tr>
                   <td>Email</td>
-                  <td><?php echo $_SESSION['email'];?></td>
+                  <td><?php echo $userRecords[$indexNo][5] ; ?></td>
 
                 </tr>
                 <tr>
                   <td>Department</td>
-                  <td><?php echo $_SESSION['department'];?></td>
+                  <td><?php echo $userRecords[$indexNo][7] ; ?></td>
 
                 </tr>
                 <tr>
                   <td>Type</td>
-                  <td><?php echo $_SESSION['type'];?></td>
+                  <td><?php echo $userRecords[$indexNo][2] ; ?></td>
 
                 </tr>
               </tbody>

@@ -29,6 +29,7 @@ if( isset( $_POST["submit"] ) ) {
             $_SESSION['email'] = $row["email"];
             $_SESSION['userId'] = $row["user_id"];
             $_SESSION['type'] = $row["type"];
+            $_SESSION['department'] = $row["department"];
        		header("Location: ../index.php"); 
 
     	
