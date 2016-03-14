@@ -84,7 +84,7 @@ if( empty( $_SESSION ) ){
       </a>
     </li>
     <li>
-      <a href="#" data-toggle="tooltip" data-placement="right" title="" data-original-title="Charts">
+      <a href="report.php" data-toggle="tooltip" data-placement="right" title="" data-original-title="Charts">
         <i class="fa fa-bar-chart-o"></i>
       </a>
     </li>

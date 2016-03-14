@@ -7,6 +7,7 @@ include("controller/timeSheetController.php");
 <div class="main-content">
     <ol class="breadcrumb">
   <li><a href="index.php">Home</a></li>
+    <li class="active">Time Sheet</li>
 </ol>
 
 <div class="widget widget-blue">
