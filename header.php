@@ -37,7 +37,7 @@ if( empty( $_SESSION ) ){
   <div class="page-header">
   <div class="header-links hidden-xs">
 
-    <div class="dropdown hidden-sm hidden-xs">
+    <div class="dropdown">
       <ul class="dropdown-menu dropdown-inbar">
         <li><a href="profile.php"><i class="fa  fa-user"></i> Profile</a></li>
         <li><a href="controller/logoutController.php"><i class="fa fa-power-off"></i> Logout</a></li>
@@ -78,7 +78,7 @@ if( empty( $_SESSION ) ){
       </a>
     </li>
     <li>
-      <a href="#" data-toggle="tooltip" data-placement="right" title="" data-original-title="UI Elements">
+      <a href="timeSheet.php" data-toggle="tooltip" data-placement="right" title="" data-original-title="UI Elements">
         <span class="badge"></span>
         <i class="fa  fa-clock-o"></i>
       </a>
