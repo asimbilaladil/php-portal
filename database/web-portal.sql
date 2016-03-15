@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Mar 13, 2016 at 02:45 PM
+-- Generation Time: Mar 15, 2016 at 03:00 PM
 -- Server version: 10.1.9-MariaDB
 -- PHP Version: 5.5.30
 
@@ -19,6 +19,29 @@ SET time_zone = "+00:00";
 --
 -- Database: `web-portal`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `clock`
+--
+
+CREATE TABLE `clock` (
+  `clock_id` int(10) NOT NULL,
+  `user_id` int(10) NOT NULL,
+  `clockIn` time NOT NULL,
+  `clockOut` time NOT NULL,
+  `date` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `clock`
+--
+
+INSERT INTO `clock` (`clock_id`, `user_id`, `clockIn`, `clockOut`, `date`) VALUES
+(10, 7, '06:26:31', '08:28:28', '2016-03-13'),
+(11, 7, '06:28:51', '06:51:58', '2016-03-12'),
+(12, 7, '09:29:27', '00:00:00', '2016-03-14');
 
 -- --------------------------------------------------------
 
@@ -50,6 +73,12 @@ INSERT INTO `user` (`user_id`, `email`, `password`, `type`, `username`, `firstNa
 --
 
 --
+-- Indexes for table `clock`
+--
+ALTER TABLE `clock`
+  ADD PRIMARY KEY (`clock_id`);
+
+--
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
@@ -60,10 +89,15 @@ ALTER TABLE `user`
 --
 
 --
+-- AUTO_INCREMENT for table `clock`
+--
+ALTER TABLE `clock`
+  MODIFY `clock_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+--
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `user_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
