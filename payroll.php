@@ -30,7 +30,9 @@ include("controller/payrollController.php");
             <h3><i class="fa fa-table"></i> List Of SAalary Components Type</h3>
           </div>
           <div class="widget-content">
+           <?php  if($_SESSION["type"] == "Manager"){ ?>
   <a href="addComponent.php"><button type="button" class="btn btn-normal">Add</button></a>
+  <?php }?>
     <div class="form-group">
               <div class="checkbox">
   
@@ -83,7 +85,9 @@ include("controller/payrollController.php");
             <h3><i class="fa fa-table"></i> List Of SAalary Components Type</h3>
           </div>
           <div class="widget-content">
+           <?php  if($_SESSION["type"] == "Manager"){ ?>
   <a href="addSalary.php"><button type="button" class="btn btn-normal">Add</button></a>
+  <?php } ?>
     <div class="form-group">
               <div class="checkbox">
   
@@ -103,15 +107,15 @@ include("controller/payrollController.php");
                 </tr>
               </thead>
               <tbody>
-              <?php if(!empty( $payRecords )) {?>
-              <?php foreach ( $payRecords as $key =>  $record ) { ?>
+              <?php if(!empty( $userPayRecords )) {?>
+              <?php foreach ( $userPayRecords as $key =>  $record ) { ?>
                 <tr>
-                  <td><?php echo "B".$record[0];?></td>
-                  <td><?php echo $record[1];?></td>
+                  <td><?php echo $record[0]." ".$record[1];?></td>
                   <td><?php echo $record[2];?></td>
-                  <td><?php echo $record[3];;?></td>
+                  <td><?php echo $record[3];?></td>
                   <td><?php echo $record[4];;?></td>
-                  <td><?php echo $record[4];;?></td>
+                  <td><?php echo $record[5];;?></td>
+                  <td><?php echo $record[6];;?></td>
                 </tr>
                <?php }
 

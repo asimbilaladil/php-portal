@@ -73,24 +73,24 @@ if( empty( $_SESSION ) ){
       </a>
     </li>
     <li>
-      <a href="user.php" data-toggle="tooltip" data-placement="right" title="" data-original-title="Forms">
+      <a href="user.php" data-toggle="tooltip" data-placement="right" title="" data-original-title="Users">
         <i class="fa  fa-user-md"></i>
       </a>
     </li>
     <li>
-      <a href="timeSheet.php" data-toggle="tooltip" data-placement="right" title="" data-original-title="UI Elements">
+      <a href="timeSheet.php" data-toggle="tooltip" data-placement="right" title="" data-original-title="Time Sheet">
         <span class="badge"></span>
         <i class="fa  fa-clock-o"></i>
       </a>
     </li>
     <li>
-      <a href="report.php" data-toggle="tooltip" data-placement="right" title="" data-original-title="Charts">
+      <a href="report.php" data-toggle="tooltip" data-placement="right" title="" data-original-title="Report">
         <i class="fa fa-bar-chart-o"></i>
       </a>
     </li>
     <li>
-      <a href="#" data-toggle="tooltip" data-placement="right" title="" data-original-title="Tables">
-        <i class="fa fa-th"></i>
+      <a href="payroll.php" data-toggle="tooltip" data-placement="right" title="" data-original-title="Payroll">
+        <i class="fa fa-money"></i>
       </a>
     </li>
 
