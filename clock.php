@@ -38,12 +38,7 @@ error_reporting(0);
 
   <div class="row">
             <div class="col-md-6 col-md-offset-3 scrolling">
-        <?php if( $_GET['error'] ){
-            echo '<div class="alert alert-success alert-dismissable">
-                      <i class="fa fa-check-circle"></i>  Your time is successfully recorded.
-                      <button type="button" class="close" data-dism"alert" aria-hidden="true">×</button>
-                    </div>';
-          } ?>
+
         <?php if( $_GET['errorMessage'] ){
             echo '<div class="alert alert-danger alert-dismissable">
                       <i class="fa fa-check-circle"></i>  Username not found!
@@ -70,8 +65,8 @@ error_reporting(0);
                   <tr>
                 
             <div class="form-group relative-w">
-              <input type="text" class="form-control" placeholder="Username" name="username" >
-              <i class="fa fa-user input-abs-icon"></i>
+              <input type="text" class="form-control" placeholder="Username" name="username" style="height:90px" >
+              <i class="fa fa-user input-abs-icon" style="top:35px"></i>
             </div>
 
                 </tr>       
@@ -103,8 +98,37 @@ error_reporting(0);
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
 <script src='assets/css/script.js'></script>
+ <?php if( $_GET['error'] ){ ?>
+<div   class="modal fade in" id="modalFormStyle1" tabindex="-1" role="dialog" aria-labelledby="modalFormStyle1Label" aria-hidden="false" style="display: block;">
+ <?php } else { ?>
+<div  style="display:none" class="modal fade in" id="modalFormStyle1" tabindex="-1" role="dialog" aria-labelledby="modalFormStyle1Label" aria-hidden="false" style="display: block;">
 
+ <?php }?>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="widget widget-blue">
+        <div class="widget-title">
 
+          <h3><i class="fa fa-ok-circle"></i> Check In / Out Notification</h3>
+        </div>
+        <div class="widget-content">
+          <div class="modal-body">
+        
+    
+            <div class="form-group">
+              <div class="checkbox">
+                <label>
+                <?php echo $_GET['name']; ?> ! Your time is successfully recorded.
+                </label>
+              </div>
+            </div>
+           <a href="clock.php"> <button type="button" class="btn btn-default" data-dismiss="modal">Ok</button></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 </body>
 
 </html>

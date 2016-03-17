@@ -7968,7 +7968,7 @@ body.modal-open,
     overflow: auto;
     overflow-y: scroll;
     position: fixed;
-    top: 0;
+    top: 170px;
     right: 0;
     bottom: 0;
     left: 0;
