@@ -46,9 +46,7 @@ if( empty( $_SESSION ) ){
 
     <div class="dropdown">
       <a href="#" class="header-link clearfix" data-toggle="dropdown">
-        <div class="avatar">
-          <img src="assets/images/avatar-small.jpg" alt="">
-        </div>
+
         <div class="user-name-w">
         <?php echo $_SESSION['fullname'];?>
            <i class="fa fa-caret-down"></i>
@@ -84,7 +82,19 @@ if( empty( $_SESSION ) ){
       </a>
     </li>
     <li>
+    <?php 
+        if($_SESSION["type"] == "Manager"){ 
+    ?>
+
+      <a href="userReportList.php" data-toggle="tooltip" data-placement="right" title="" data-original-title="Report">
+
+     <?php
+        } else {
+       ?>   
+
       <a href="report.php" data-toggle="tooltip" data-placement="right" title="" data-original-title="Report">
+
+    <?php } ?>
         <i class="fa fa-bar-chart-o"></i>
       </a>
     </li>

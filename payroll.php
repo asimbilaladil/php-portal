@@ -7,6 +7,7 @@ include("controller/payrollController.php");
 <div class="main-content">
     <ol class="breadcrumb">
   <li><a href="index.php">Home</a></li>
+   <li class="active">Payroll</li>
 </ol>
 
 <div class="row">
@@ -58,8 +59,9 @@ include("controller/payrollController.php");
                   <td><?php echo "B".$record[0];?></td>
                   <td><?php echo $record[1];?></td>
                   <td><?php echo $record[2];?></td>
-                  <td><?php echo $record[3];;?></td>
-                  <td><?php echo $record[4];;?></td>
+                  <td><?php echo $record[3];?></td>
+                  <td><?php echo $record[4];?></td>
+                  
                 </tr>
                <?php }
 
@@ -104,6 +106,10 @@ include("controller/payrollController.php");
                   <th>Currency</th>
                   <th>Amount</th>
                   <th>Salary</th>
+                  <?php  if($_SESSION["type"] == "Manager"){ ?>
+                  <th>Control</th>
+                   <?php }?>
+
                 </tr>
               </thead>
               <tbody>
@@ -113,10 +119,16 @@ include("controller/payrollController.php");
                   <td><?php echo $record[0]." ".$record[1];?></td>
                   <td><?php echo $record[2];?></td>
                   <td><?php echo $record[3];?></td>
-                  <td><?php echo $record[4];;?></td>
-                  <td><?php echo $record[5];;?></td>
-                  <td><?php echo $record[6];;?></td>
-                </tr>
+                  <td><?php echo $record[4];?></td>
+                  <td><?php echo $record[5];?></td>
+                  <td><?php echo $record[6];?></td>
+                  <?php  if($_SESSION["type"] == "Manager"){ ?>
+                  <td ><a href="updateSalary.php?payrollId=<?php echo $record[7];?>"><i class="fa fa-edit"></i></a>
+<a href="controller/deleteSalaryController.php?payrollId=<?php echo $record[7];?>"><i class="fa fa-trash-o"></i></a>
+                  </td>
+                  <?php }?>
+                
+                 </tr>
                <?php }
 
                } ?>

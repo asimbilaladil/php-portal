@@ -75,7 +75,10 @@ include("header.php");
             </table>
 
           </div>
+
           <button name="submit" type="submit" class="btn btn-normal">Add</button>
+          <a href="payroll.php"> <button name="button" type="button" class="btn btn-normal">Cancel</button></a> 
+
           </form>
           </div>
         </div>

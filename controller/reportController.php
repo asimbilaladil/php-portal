@@ -5,7 +5,12 @@ include("connection.php");
 
     $dateRecords = [];
     $timeRecords = [];
-    $userId = $_SESSION['userId'];
+    if($_SESSION["type"] == "Manager"){ 
+        $userId = $_GET['userId'];
+     } else {
+        $userId = $_SESSION['userId'];
+     }
+    
 
     /*
      *  Select query to check username exists or not in user table

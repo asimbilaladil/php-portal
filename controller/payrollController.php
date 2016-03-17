@@ -22,21 +22,21 @@ include("connection.php");
      */
     $userPayRecords = [];
     $tempRecords = [];
-    $sql = "SELECT 
-(select firstName from user where user.user_id = `user_id`) As firstName , 
-(select lastName from user where user.user_id = `user_id`) As lastName ,
+    $sql = "SELECT user.firstName, user.lastName, payroll.payroll_id,
 (select name from payroll_components where payroll_components.payroll_id = `component_id`) As componentName,
 (select payFrequency from payroll_components where payroll_components.payroll_id = `component_id`) As payFrequency,
 (select currency from payroll_components where payroll_components.payroll_id = `component_id`) As currency,
 (select payRate from payroll_components where payroll_components.payroll_id = `component_id`) As payRate,
-`salary`
-FROM `payroll` ";
+payroll.`salary`
+FROM user
+INNER JOIN payroll
+ON user.user_id=payroll.user_id";
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {
 
         while($row = $result->fetch_assoc()) {
-             $tempRecords =  array($row["firstName"], $row["lastName"],$row["componentName"], $row["payFrequency"], $row["currency"], $row["payRate"],  $row["salary"]   );
+             $tempRecords =  array($row["firstName"], $row["lastName"],$row["componentName"], $row["payFrequency"], $row["currency"], $row["payRate"],  $row["salary"], $row["payroll_id"]   );
             array_push( $userPayRecords, $tempRecords );
         }
     } 

@@ -64,6 +64,8 @@ $indexNo = getUser();
 
               <div class="form-group">
                 <div class="col-md-offset-4 col-md-8">
+                          <a href="user.php"> <button name="button" type="button" class="btn btn-normal">Cancel</button></a> 
+
                   <button type="submit" class="btn btn-primary btn-normal" name="submit"> Update</button>
                 </div>
               </div>

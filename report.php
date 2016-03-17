@@ -7,6 +7,8 @@ include("controller/reportController.php");
 <div class="main-content">
     <ol class="breadcrumb">
   <li><a href="index.php">Home</a></li>
+    <li class="active">Report</li>
+
 </ol>
 
 <div class="widget widget-blue">
