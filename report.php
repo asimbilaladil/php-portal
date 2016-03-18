@@ -5,7 +5,7 @@ include("controller/reportController.php");
 
 ?>
 <div class="main-content">
-    <ol class="breadcrumb">
+    <ol class="breadcrumb" id="reportBreadcrumb">
   <li><a href="index.php">Home</a></li>
     <li class="active">Report</li>
 
@@ -21,9 +21,15 @@ include("controller/reportController.php");
 
             <div class="shadowed-bottom">
               <div class="row">
-	<div id="chart1">
+<div id="printableArea">
+
+	<div id="chart_div">
 						
-					</div>               
+					</div>  
+          </div>
+
+                           <button type="button" onclick="printReport('chart_div')" class="btn btn-iconed btn-primary btn-sm  "><i class="fa fa-print" id="print"></i> Print</button>
+
                 <div class="col-sm-4 bordered" >
                
 				
@@ -41,6 +47,8 @@ include("controller/reportController.php");
 
 </div>
 
+
+</body>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
 <script src='assets/js/script.js'></script>
@@ -50,37 +58,57 @@ include("controller/reportController.php");
 <script type="text/javascript" src="assets/plugins/jqplot.pieRenderer.js"></script>
 <script type="text/javascript" src="assets/plugins/jqplot.categoryAxisRenderer.js"></script>
 <script type="text/javascript" src="assets/plugins/jqplot.pointLabels.js"></script>
-<link rel="stylesheet" type="text/css" href="assets/css/jquery.jqplot.css" />
-<script type="text/javascript">
-	
-	$(document).ready(function(){
-        $.jqplot.config.enablePlugins = true;
-        var s1 = <?php  echo json_encode($timeRecords); ?>;
-        var ticks =  <?php echo json_encode($dateRecords); ?>;
-         
-        plot1 = $.jqplot('chart1', [s1], {
-            // Only animate if we're not using excanvas (not in IE 7 or IE 8)..
-            animate: !$.jqplot.use_excanvas,
-            seriesDefaults:{
-                renderer:$.jqplot.BarRenderer,
-                pointLabels: { show: true }
-            },
-            axes: {
-                xaxis: {
-                    renderer: $.jqplot.CategoryAxisRenderer,
-                    ticks: ticks
-                }
-            },
-            highlighter: { show: false }
-        });
-     
-        $('#chart1').bind('jqplotDataClick', 
-            function (ev, seriesIndex, pointIndex, data) {
-                $('#info1').html('series: '+seriesIndex+', point: '+pointIndex+', data: '+data);
-            }
-        );
-    });
-</script>
-</body>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
+<link rel="stylesheet" type="text/css" href="assets/css/jquery.jqplot.css" />
+
+<script type="text/javascript">
+      google.charts.load("current", {packages:['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+    function drawChart() {
+      
+  var dateRecords =<?php echo json_encode($dateRecords); ?> ;
+  var timeRecords = <?php  echo json_encode($timeRecords); ?>;
+
+  var data = new google.visualization.DataTable();
+  data.addColumn('string', 'Date');
+  data.addColumn('number', 'No Of Hours');
+
+  for(i = 0; i < dateRecords.length; i++)
+  {
+    if(timeRecords[i] < 0 ){
+      timeRecords[i] = 0;
+    }
+    data.addRow([dateRecords[i], timeRecords[i]]);
+    
+  }
+
+  // Create and draw the visualization.
+
+      var chart_div = document.getElementById('chart_div');
+      var chart = new google.visualization.ColumnChart(chart_div);
+
+      // Wait for the chart to finish drawing before calling the getImageURI() method.
+      google.visualization.events.addListener(chart, 'ready', function () {
+        chart_div.innerHTML = '<img src="' + chart.getImageURI() + '">';
+        //console.log(chart_div.innerHTML);
+      });
+
+      chart.draw(data, {});
+  document.getElementById('png').outerHTML = '<a href="' + chart.getImageURI() + '">Printable version</a>';
+
+  }
+
+  function printReport(divName) {
+
+    var printContents = document.getElementById(divName).innerHTML;
+    var originalContents = document.body.innerHTML;
+    document.body.innerHTML = printContents;
+    window.print();
+    document.body.innerHTML = originalContents;
+     
+}
+
+
+</script>
 </html>

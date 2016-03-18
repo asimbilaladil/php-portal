@@ -117,9 +117,16 @@ error_reporting(0);
     
             <div class="form-group">
               <div class="checkbox">
-                <label>
-                <?php echo $_GET['name']; ?> ! Your time is successfully recorded.
-                </label>
+                <strong><label>
+                <?php 
+                if( $_GET['error'] == 2){
+                  echo 'Welcome '.$_GET['name'].' You are clocked-in.'; 
+                } else if ( $_GET['error'] == 1) {
+                  echo 'Hi ' .$_GET['name'].' You are clocked-out, have a good day.'; 
+                }
+
+                ?>
+                </label></strong>
               </div>
             </div>
            <a href="clock.php"> <button type="button" class="btn btn-default" data-dismiss="modal">Ok</button></a>

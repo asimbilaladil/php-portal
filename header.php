@@ -59,12 +59,12 @@ if( empty( $_SESSION ) ){
     </div>
   </div>
   <a class="logo hidden-xs" href="index.html"><i class="fa fa-rocket"></i></a>
-  <h1>Web Portal</h1>
+  <h1 id="reportHead">Web Portal</h1>
 </div>
 
   <div class="top-menu">
   <div class="sidebar-wrapper">
-  <ul>
+  <ul id="mainMenu">
     <li>
       <a href="index.php" data-toggle="tooltip" data-placement="right" title="" data-original-title="Dashboard">
         <i class="fa fa-home"></i>
@@ -98,12 +98,17 @@ if( empty( $_SESSION ) ){
         <i class="fa fa-bar-chart-o"></i>
       </a>
     </li>
+       <?php 
+        if($_SESSION["type"] == "Manager"){ 
+    ?>
     <li>
       <a href="payroll.php" data-toggle="tooltip" data-placement="right" title="" data-original-title="Payroll">
         <i class="fa fa-money"></i>
       </a>
     </li>
-
+  <?php
+        } 
+       ?> 
   </ul>
 </div>
 
