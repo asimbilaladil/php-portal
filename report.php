@@ -69,19 +69,22 @@ include("controller/reportController.php");
       
   var dateRecords =<?php echo json_encode($dateRecords); ?> ;
   var timeRecords = <?php  echo json_encode($timeRecords); ?>;
-
+  var sum = 0;
   var data = new google.visualization.DataTable();
+  for (var i in timeRecords){
+      if(timeRecords[i] < 0 ){
+          timeRecords[i] = 0;
+      }
+      sum = sum + timeRecords[i];
+  }
   data.addColumn('string', 'Date');
-  data.addColumn('number', 'No Of Hours');
+  data.addColumn('number', sum + " Hrs");
   data.addColumn({type: 'number', role: 'annotation'});
 
 
   for(i = 0; i < dateRecords.length; i++)
   {
-    if(timeRecords[i] < 0 ){
-      timeRecords[i] = 0;
-    }
-    data.addRow([dateRecords[i], timeRecords[i],timeRecords[i]]);
+        data.addRow([dateRecords[i], timeRecords[i],timeRecords[i]]);
     
   }
 
