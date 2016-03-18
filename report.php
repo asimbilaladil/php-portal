@@ -73,13 +73,15 @@ include("controller/reportController.php");
   var data = new google.visualization.DataTable();
   data.addColumn('string', 'Date');
   data.addColumn('number', 'No Of Hours');
+  data.addColumn({type: 'number', role: 'annotation'});
+
 
   for(i = 0; i < dateRecords.length; i++)
   {
     if(timeRecords[i] < 0 ){
       timeRecords[i] = 0;
     }
-    data.addRow([dateRecords[i], timeRecords[i]]);
+    data.addRow([dateRecords[i], timeRecords[i],timeRecords[i]]);
     
   }
 

@@ -27,7 +27,7 @@ if( empty( $_SESSION ) ){
     @javascript html5shiv respond.min
   <![endif]-->
 
-  <title>Responsive Admin template based on Bootstrap 3</title>
+  <title>Web-Portal</title>
 
 </head>
 

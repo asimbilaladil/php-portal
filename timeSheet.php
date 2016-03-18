@@ -17,7 +17,7 @@ include("controller/timeSheetController.php");
       </div>
       <div class="widget-content">
 
-        <div class="table-responsive">
+        <div class="table-responsive" id="payRollTable">
           <table class="table table-bordered table-hover">
             <thead>
               <tr>
@@ -35,13 +35,19 @@ include("controller/timeSheetController.php");
                 <td><?php echo $record[0]; ?></td>
                 <td><?php echo $record[1]; ?></td>
                 <td><?php echo $record[2]; ?></td>
-                <td><?php echo $record[2] - $record[1]; ?></td>
+                <td><?php if (($record[2] - $record[1]) < 0 ) {
+                    echo "0";
+                  } else { echo $record[2] - $record[1]; }?></td>
               </tr>
               <?php }?>
             </tbody>
           </table>
+
         </div>
+                                             <button type="button" onclick="printReport('payRollTable')" class="btn btn-iconed btn-primary btn-sm  "><i class="fa fa-print" id="print"></i> Print</button>
+
       </div>
+
     </div>
 
   </div>
@@ -51,8 +57,20 @@ include("controller/timeSheetController.php");
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
 <script src='assets/js/script.js'></script>
+<script type="text/javascript">
+
+  function printReport(divName) {
+
+    var printContents = document.getElementById(divName).innerHTML;
+    var originalContents = document.body.innerHTML;
+    document.body.innerHTML = printContents;
+    window.print();
+    document.body.innerHTML = originalContents;
+     
+}
 
 
+</script>
 </body>
 
 </html>
