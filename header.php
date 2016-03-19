@@ -71,7 +71,7 @@ if( empty( $_SESSION ) ){
       </a>
     </li>
     <li>
-      <a href="user.php" data-toggle="tooltip" data-placement="right" title="" data-original-title="Users">
+      <a href="user.php" data-toggle="tooltip" data-placement="right" title="" data-original-title="Recruit">
         <i class="fa  fa-user-md"></i>
       </a>
     </li>
@@ -106,9 +106,21 @@ if( empty( $_SESSION ) ){
         <i class="fa fa-money"></i>
       </a>
     </li>
+          <li>
+      <a href="supportList.php" data-toggle="tooltip" data-placement="right" title="" data-original-title="Support">
+        <i class="fa  fa-comment-o"></i>
+      </a>
+    </li>
   <?php
-        } 
-       ?> 
+        } else {
+       ?>
+
+       <li>
+      <a href="support.php" data-toggle="tooltip" data-placement="right" title="" data-original-title="Support">
+        <i class="fa  fa-comment-o"></i>
+      </a>
+    </li>
+    <?php } ?>
   </ul>
 </div>
 
