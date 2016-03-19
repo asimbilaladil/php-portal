@@ -14,6 +14,7 @@ if( isset( $_POST["submit"] ) ) {
     $first_day_this_month = date('Y-m-01'); // hard-coded '01' for first day
     $last_day_this_month  = date('Y-m-31');
     $totalhr = 0;
+    $totalmin = 0;
     $payRate = 0;
 
     $sql = "SELECT * FROM clock where user_id =".$userId. " AND date >= '".$first_day_this_month. "' AND date <= '".$last_day_this_month."'";
@@ -22,13 +23,17 @@ if( isset( $_POST["submit"] ) ) {
     if ($result->num_rows > 0) {
 
         while($row = $result->fetch_assoc()) {
-             $noOfHr =   $row["clockOut"] - $row["clockIn"];
 
-            if ( $noOfHr > 0 ){
-                 $totalhr = $totalhr + $noOfHr; 
+           if(    $row["clockOut"] != '00:00:00'){
+            $diff =  strtotime($row["clockOut"]) - strtotime( $row["clockIn"]);
+            $interval  = abs($diff);
+            $minutes   = round($interval / 60);
+            $noOfHr = round(($minutes /60),2);
+            $totalmin = $totalmin + $minutes; 
+            
             }
-        }
-        
+       } 
+       $totalhr = round($totalmin /60,2);
     } 
 
     $sql = "SELECT * FROM payroll_components where payroll_id =".$componentId;
@@ -56,8 +61,7 @@ if( isset( $_POST["submit"] ) ) {
          * Excute insert query to insert data into payRoll table and redirect to payRoll page
          */
         if ($conn->query($sql) === TRUE) {
-
-            header("Location: ../payroll.php"); 
+           header("Location: ../payroll.php"); 
 
         } else {
 
