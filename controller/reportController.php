@@ -23,7 +23,16 @@ include("connection.php");
 
         while($row = $result->fetch_assoc()) {
 			array_push( $dateRecords, $row["date"]);
-            array_push( $timeRecords, ($row["clockOut"] - $row["clockIn"]) );
+            if(    $row["clockOut"] != '00:00:00'){
+            $diff =  strtotime($row["clockOut"]) - strtotime( $row["clockIn"]);
+            $interval  = abs($diff);
+            $minutes   = round($interval / 60);
+            $noOfHr = round(($minutes /60),2);
+            
+            } else {
+                $noOfHr = 0;
+            }
+            array_push( $timeRecords, $noOfHr );
     	}
     } 
     

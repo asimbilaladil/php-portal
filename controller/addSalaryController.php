@@ -11,7 +11,7 @@ if( isset( $_POST["submit"] ) ) {
 
     $userId = $_POST["employee"];
     $componentId = $_POST["component"];
-    $first_day_this_month = date('Y-m-01'); // hard-coded '01' for first day
+    $first_day_this_month = date('Y-m-01'); 
     $last_day_this_month  = date('Y-m-31');
     $totalhr = 0;
     $totalmin = 0;
