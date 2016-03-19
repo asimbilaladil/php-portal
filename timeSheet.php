@@ -2,7 +2,14 @@
 
 include("header.php");
 include("controller/timeSheetController.php");
-
+function convertToHoursMins($time, $format = '%02d:%02d') {
+    if ($time < 1) {
+        return;
+    }
+    $hours = floor($time / 60);
+    $minutes = ($time % 60);
+    return sprintf($format, $hours, $minutes);
+}
 ?>
 <div class="main-content">
     <ol class="breadcrumb">
@@ -35,9 +42,18 @@ include("controller/timeSheetController.php");
                 <td><?php echo $record[0]; ?></td>
                 <td><?php echo $record[1]; ?></td>
                 <td><?php echo $record[2]; ?></td>
-                <td><?php if (($record[2] - $record[1]) < 0 ) {
-                    echo "0";
-                  } else { echo $record[2] - $record[1]; }?></td>
+                <td><?php 
+                  if (($record[2] - $record[1]) < 0 ) {
+                    echo "00 hours 00 minutes";
+                  } else { 
+                          $diff =  strtotime($record[2]) - strtotime($record[1]);
+                          $interval  = abs($diff);
+                          $minutes   = round($interval / 60);
+
+                    echo  convertToHoursMins($minutes, '%02d hours %02d minutes');  
+                  }
+                    ?>
+                </td>
               </tr>
               <?php }?>
             </tbody>
