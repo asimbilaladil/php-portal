@@ -3,6 +3,13 @@
  * Docs & License: http://arshaw.com/fullcalendar/
  * (c) 2013 Adam Shaw
  */
+ .modalPopUp {
+    display: none;
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
  .btn-normal{
     color: #ffffff;
     background-color: #2980b9;
@@ -7964,7 +7971,6 @@ body.modal-open,
     margin-right: 15px
 }
 .modal {
-    display: none;
     overflow: auto;
     overflow-y: scroll;
     position: fixed;

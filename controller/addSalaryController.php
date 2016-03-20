@@ -16,6 +16,10 @@ if( isset( $_POST["submit"] ) ) {
     $totalhr = 0;
     $totalmin = 0;
     $payRate = 0;
+       
+       /*
+         *  select query for clock table using user id to get clock in and out time
+        */
 
     $sql = "SELECT * FROM clock where user_id =".$userId. " AND date >= '".$first_day_this_month. "' AND date <= '".$last_day_this_month."'";
     $result = $conn->query($sql);
@@ -33,9 +37,12 @@ if( isset( $_POST["submit"] ) ) {
             
             }
        } 
+       //get totla no of hrs that a user work
        $totalhr = round($totalmin /60,2);
     } 
-
+        /*
+         *  select query for payroll_components table using payroll id to get payrate
+        */
     $sql = "SELECT * FROM payroll_components where payroll_id =".$componentId;
     $result = $conn->query($sql);
 
@@ -46,6 +53,7 @@ if( isset( $_POST["submit"] ) ) {
         }
         
     }
+        //calculate salary 
         $salary = $payRate * $totalhr;
 
         /*
@@ -74,13 +82,14 @@ if( isset( $_POST["submit"] ) ) {
 }
 
 
-    /*
-     *  Select query to check username exists or not in user table
-     */
+
 
     $userRecords = [];
     $tempRecords = [];
     $componentRecords = [];
+    /*
+     *  Select query to get date from user table
+     */
     $sql = "SELECT * FROM user";
     $result = $conn->query($sql);
 
@@ -93,7 +102,7 @@ if( isset( $_POST["submit"] ) ) {
     } 
 
     /*
-     *  Select query to check username exists or not in user table
+     *  Select query to get data from payroll_components table
      */
     $tempRecords = [];
     

@@ -24,13 +24,16 @@ if( isset( $_POST["submit"] ) ) {
 
         while($row = $result->fetch_assoc()) {
             session_start();
+            //Set all login date into session variable
             $_SESSION['username'] = $row["username"] ;
             $_SESSION['fullname'] = $row["firstName"] . " " . $row["lastName"]  ;
             $_SESSION['email'] = $row["email"];
             $_SESSION['userId'] = $row["user_id"];
             $_SESSION['type'] = $row["type"];
             $_SESSION['department'] = $row["department"];
-       		header("Location: ../index.php"); 
+       		
+            //redirect user to index.php page on successfull login
+            header("Location: ../index.php"); 
 
     	
     	}
@@ -41,7 +44,7 @@ if( isset( $_POST["submit"] ) ) {
          */
     } else {
 
-      header("Location: ../login.html?errorMessage=invalid"); 
+      header("Location: ../login.php?errorMessage=invalid"); 
 
     }
 

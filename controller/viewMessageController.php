@@ -17,6 +17,7 @@
           $message = $row["message"];
           $date = $row["date"];
           $fullname =  $row["fullName"];
+          $email = $row["email"];
 
     	   }
     }

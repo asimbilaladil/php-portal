@@ -22,7 +22,7 @@ include("header.php");
                 <div class="row">
                   <label class="col-md-4 control-label">Subject</label>
                   <div class="col-md-8">
-                    <input type="text" class="form-control mask_money" placeholder="Enter subject" name="subject">
+                    <input required type="text" class="form-control mask_money" placeholder="Enter subject" name="subject">
                     
                   </div>
                 </div>
@@ -43,6 +43,7 @@ include("header.php");
               <button type="submit" class="btn btn-normal" name="submit">Send</button>
               <input type="hidden" name="fullname" value="<?php echo $_SESSION['fullname']; ?>" />
               <input type="hidden" name="userId" value="<?php echo $_SESSION['userId']; ?>" />
+              <input type="hidden" name="email" value="<?php echo $_SESSION['email']; ?>" />
 
                   </div>
                 </div>
