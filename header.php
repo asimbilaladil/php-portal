@@ -110,10 +110,16 @@ if( empty( $_SESSION ) ){
         if($_SESSION["type"] == "Manager"){ 
     ?>
     <li>
+      <a href="recruitment.php" data-toggle="tooltip" data-placement="right" title="" data-original-title="Recruitment">
+        <i class="fa  fa-users"></i>
+      </a>
+    </li>
+    <li>
       <a href="payroll.php" data-toggle="tooltip" data-placement="right" title="" data-original-title="Payroll">
         <i class="fa fa-money"></i>
       </a>
     </li>
+    
           <li>
       <a href="supportList.php" data-toggle="tooltip" data-placement="right" title="" data-original-title="Support">
         <i class="fa  fa-comment-o"></i>
