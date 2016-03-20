@@ -52,7 +52,7 @@ if( isset( $_POST["submit"] ) ) {
 
                     if ($conn->query($sql) === TRUE) {
 
-                        //header("Location: ../clock.php?error=1&name=$username"); 
+                        header("Location: ../clock.php?error=1&name=$username"); 
 
                     } else {
 
@@ -82,7 +82,7 @@ if( isset( $_POST["submit"] ) ) {
                 
                 if ($conn->query($sql) === TRUE) {
 
-                   // header("Location: ../clock.php?error=2&name=$username"); 
+                    header("Location: ../clock.php?error=2&name=$username"); 
 
                 } else {
 
