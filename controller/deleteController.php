@@ -16,7 +16,7 @@ include("connection.php");
    echo  $sql = "Delete from user where user_id =".$userId;
 
     /*
-     *  Delete query excute and redirect to dashboard page
+     *  Delete query excute and redirect to user page
      */
 
     if ($conn->query($sql) === TRUE) {
