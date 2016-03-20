@@ -35,8 +35,15 @@ if( isset( $_POST["submit"] ) ) {
                 while($rowClock = $resultClock->fetch_assoc()) {
 
                     $clockId = $rowClock["clock_id"];
-                    $clockOut =  date("h:i:sa");
+                    //$clockOut =  date("h:i:sa");
+                    // $t = (60*60)*4;                  
+                    // $timestamp =  $clockOut + $t ;
 
+                    // echo $clockOut = date('h:i:sa', $timestamp);
+                    $addTime = (60*60)*7;                  
+                    $timestamp =  time() - $addTime;//+ $addTime ;
+
+                    $clockOut = date('H:i', $timestamp);
                     $sql = "UPDATE clock SET clockOut='$clockOut' WHERE clock_id=".$clockId;
 
                     /*
@@ -45,7 +52,7 @@ if( isset( $_POST["submit"] ) ) {
 
                     if ($conn->query($sql) === TRUE) {
 
-                        header("Location: ../clock.php?error=1&name=$username"); 
+                        //header("Location: ../clock.php?error=1&name=$username"); 
 
                     } else {
 
@@ -59,7 +66,11 @@ if( isset( $_POST["submit"] ) ) {
                 /*
                  *  Insert query for clock table  
                  */
-                $clockIn =  date("h:i:sa");
+                 //$clockIn =  date("h:i:sa");
+                     $addTime = (60*60)*7;                  
+                    $timestamp =  time() - $addTime ;
+
+                    $clockIn = date('H:i', $timestamp);
 
                 $sql = "INSERT INTO clock (user_id, clockIn, date)
                 VALUES ('$userId', '$clockIn', '$currentDate' )";
@@ -71,7 +82,7 @@ if( isset( $_POST["submit"] ) ) {
                 
                 if ($conn->query($sql) === TRUE) {
 
-                    header("Location: ../clock.php?error=2&name=$username"); 
+                   // header("Location: ../clock.php?error=2&name=$username"); 
 
                 } else {
 
