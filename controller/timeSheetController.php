@@ -2,7 +2,7 @@
 
 include("connection.php");
 
-
+error_reporting(0);
     $tempRecords = [];
     $timeRecords = [];
     $userId = $_SESSION['userId'];
