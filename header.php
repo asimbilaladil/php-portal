@@ -89,16 +89,16 @@ if( empty( $_SESSION ) ){
         if($_SESSION["type"] == "Manager"){ 
     ?>
       <a href="userTimesheetList.php" data-toggle="tooltip" data-placement="right" title="" data-original-title="Time Sheet">
-        <span class="badge"></span>
-        <i class="fa  fa-clock-o"></i>
-      </a>
+
           <?php
         } else {
        ?>  
       <a href="timeSheet.php" data-toggle="tooltip" data-placement="right" title="" data-original-title="Time Sheet">
 
            <?php } ?>
-
+        <span class="badge"></span>
+        <i class="fa  fa-clock-o"></i>
+      </a>
     </li>
     <li>
     <?php 
