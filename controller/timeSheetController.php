@@ -7,6 +7,11 @@ include("connection.php");
     $timeRecords = [];
     $userId = $_SESSION['userId'];
 
+    if($_GET['id']){
+        $userId = $_GET['id'];
+
+    }
+
     /*
      *  Select query to check username exists or not in user table
      */
