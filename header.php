@@ -71,7 +71,15 @@ if( empty( $_SESSION ) ){
       </a>
     </li>
     <li>
+    <?php 
+        if($_SESSION["type"] == "Manager"){ 
+    ?>
       <a href="user.php" data-toggle="tooltip" data-placement="right" title="" data-original-title="Recruit">
+      <?php } else { ?>
+      <a href="profile.php" data-toggle="tooltip" data-placement="right" title="" data-original-title="Profile">
+
+      <?php }?>
+
         <i class="fa  fa-user-md"></i>
       </a>
     </li>
