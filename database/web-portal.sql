@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Mar 20, 2016 at 10:52 AM
+-- Generation Time: Mar 20, 2016 at 10:14 PM
 -- Server version: 10.1.9-MariaDB
 -- PHP Version: 5.5.30
 
@@ -48,7 +48,7 @@ INSERT INTO `clock` (`clock_id`, `user_id`, `clockIn`, `clockOut`, `date`) VALUE
 (16, 10, '09:53:53', '00:00:00', '2016-03-17'),
 (17, 7, '05:41:08', '09:15:45', '2016-03-18'),
 (18, 8, '05:42:11', '00:00:00', '2016-03-18'),
-(19, 7, '10:41:15', '10:42:25', '2016-03-20');
+(23, 7, '13:54:00', '12:01:00', '2016-03-22');
 
 -- --------------------------------------------------------
 
@@ -60,7 +60,7 @@ CREATE TABLE `payroll` (
   `payroll_id` int(10) NOT NULL,
   `user_id` int(10) NOT NULL,
   `component_id` int(10) NOT NULL,
-  `salary` int(100) NOT NULL
+  `salary` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -68,9 +68,13 @@ CREATE TABLE `payroll` (
 --
 
 INSERT INTO `payroll` (`payroll_id`, `user_id`, `component_id`, `salary`) VALUES
-(3, 7, 2, 160),
-(4, 7, 3, 240),
-(5, 8, 1, 0);
+(3, 7, 2, '160'),
+(4, 7, 3, '240'),
+(5, 8, 1, '0'),
+(6, 7, 1, '242'),
+(7, 7, 1, '272'),
+(8, 7, 1, '272'),
+(9, 7, 1, '271.5');
 
 -- --------------------------------------------------------
 
@@ -187,12 +191,12 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `clock`
 --
 ALTER TABLE `clock`
-  MODIFY `clock_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `clock_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 --
 -- AUTO_INCREMENT for table `payroll`
 --
 ALTER TABLE `payroll`
-  MODIFY `payroll_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `payroll_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `payroll_components`
 --

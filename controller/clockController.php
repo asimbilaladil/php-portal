@@ -26,7 +26,7 @@ if( isset( $_POST["submit"] ) ) {
             $userId = $rowUser["user_id"];
             $currentDate = date("Y-m-d");
 
-            $sqlClock = "SELECT * FROM `clock` where `user_id` = ". $userId ." AND `date` = '". $currentDate ."'";
+            $sqlClock = "SELECT * FROM `clock` where `user_id` = ". $userId ." AND `date` = '". $currentDate ."' ORDER BY `clock_id` desc LIMIT 1";
             $resultClock = $conn->query($sqlClock);
 
 
@@ -34,32 +34,60 @@ if( isset( $_POST["submit"] ) ) {
 
                 while($rowClock = $resultClock->fetch_assoc()) {
 
-                    $clockId = $rowClock["clock_id"];
-                    //$clockOut =  date("h:i:sa");
-                    // $t = (60*60)*4;                  
-                    // $timestamp =  $clockOut + $t ;
+                    if($rowClock["clockOut"] == '00:00:00'){
 
-                    // echo $clockOut = date('h:i:sa', $timestamp);
+                        $clockId = $rowClock["clock_id"];
+                        //$clockOut =  date("h:i:sa");
+                        // $t = (60*60)*4;                  
+                        // $timestamp =  $clockOut + $t ;
+
+                        // echo $clockOut = date('h:i:sa', $timestamp);
+                        $addTime = (60*60)*7;                  
+                        $timestamp =  time() - $addTime;//+ $addTime ;
+
+                        $clockOut = date('H:i', $timestamp);
+                        $sql = "UPDATE clock SET clockOut='$clockOut' WHERE clock_id=".$clockId;
+
+                        /*
+                         *  Update query excute and redirect to clock page
+                         */
+
+                        if ($conn->query($sql) === TRUE) {
+
+                            header("Location: ../clock.php?error=1&name=$username"); 
+
+                        } else {
+
+                            header("Location: ../clock.php"); 
+                        }
+
+                    } else {
+                    /*
+                     *  Insert query for clock table  
+                     */
                     $addTime = (60*60)*7;                  
-                    $timestamp =  time() - $addTime;//+ $addTime ;
+                    $timestamp =  time() - $addTime ;
+                    $clockIn = date('H:i', $timestamp);
 
-                    $clockOut = date('H:i', $timestamp);
-                    $sql = "UPDATE clock SET clockOut='$clockOut' WHERE clock_id=".$clockId;
+                    $sql = "INSERT INTO clock (user_id, clockIn, date)
+                    VALUES ('$userId', '$clockIn', '$currentDate' )";
+
 
                     /*
-                     *  Update query excute and redirect to clock page
+                     *  Excute insert query to insert data into clock table and redirect to clock page
                      */
-
+                    
                     if ($conn->query($sql) === TRUE) {
 
-                        header("Location: ../clock.php?error=1&name=$username"); 
+                        header("Location: ../clock.php?error=2&name=$username"); 
 
                     } else {
 
-                        header("Location: ../clock.php"); 
+                        echo "Error: " . $sql . "<br>" . $conn->error;
+
                     }
 
-                
+                        }
                 }
             } else {
 
