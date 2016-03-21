@@ -33,6 +33,7 @@ function convertToHoursMins($time, $format = '%02d:%02d') {
                 <th>Clock-In</th>
                 <th>Clock-Out</th>
                 <th>No Of hour</th>
+                <th>Control</th>
               </tr>
             </thead>
             <tbody>
@@ -54,6 +55,15 @@ function convertToHoursMins($time, $format = '%02d:%02d') {
                   }
                     ?>
                 </td>
+                                <?php  
+                    if($_SESSION["type"] == "Manager"){
+                ?>
+                               <td >
+                   <a  href="timeSheet.php?id=<?php echo  $_GET['id']; ?>&key=<?php echo $key;?>&error=1" class="btn btn-default btn-xs">edit</a>
+                <a href="controller/timeSheetController.php?id=<?php echo  $_GET['id']; ?>&rowId=<?php echo $record[3];?>" class="btn btn-danger btn-xs remove-tr"><i class="fa fa-times"></i></a>
+
+                </td>
+                  <?php }?>
               </tr>
               <?php }?>
             </tbody>
@@ -87,6 +97,69 @@ function convertToHoursMins($time, $format = '%02d:%02d') {
 
 
 </script>
+<?php if( $_GET['error'] ==1 ) {?>
+<div   class="modal fade in " id="modalFormStyle1" tabindex="-1" role="dialog" aria-labelledby="modalFormStyle1Label" aria-hidden="false" >
+
+  <div class="modal-dialog ">
+    <div class="modal-content">
+      <div class="widget widget-blue">
+        <div class="widget-title">
+
+          <h3><i class="fa fa-ok-circle"></i> Edit Time Sheet Record </h3>
+        </div>
+        <div class="widget-content">
+          <div class="modal-body">
+          <form role="form" class="form-horizontal" action="controller/updateTimeSheetController.php" method="POST">
+              <div class="form-group">
+                <div class="row">
+                  <label class="col-md-4 control-label">Date:</label>
+                  <div class="col-md-8">
+                    <input required type="text" class="form-control mask_money" placeholder="Enter Date" name="timesheetDate" value="<?php echo $timeRecords[$_GET['key']][0]; ?>">
+                    
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="row">
+                  <label class="col-md-4 control-label">Clock In:</label>
+                  <div class="col-md-8">
+                    <input required type="text" class="form-control mask_money" placeholder="Enter Clock In" name="timesheetClockIn"  value="<?php echo $timeRecords[$_GET['key']][1]; ?>">
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="row">
+                  <label class="col-md-4 control-label">Clock Out:</label>
+                  <div class="col-md-8">
+                    <input required type="text" class="form-control mask_money" placeholder="Enter Clock Out" name="timesheetClockOut" value="<?php echo $timeRecords[$_GET['key']][2]; ?>">
+                  </div>
+                </div>
+              </div>
+                            <div class="form-group">
+                <div class="row">
+                  <label class="col-md-4 control-label"></label>
+                  <div class="col-md-8">
+              <button type="submit" class="btn btn-normal" name="save">Save</button>
+             <a href="timeSheet.php?id=<?php echo $_GET['id']; ?>"> <button type="button" class="btn btn-normal" name="cancel">Cancel</button></a> 
+              <input name="id" type="hidden" value="<?php echo $_GET['id']; ?>" />
+              <input name="rowId" type="hidden" value="<?php echo $timeRecords[$_GET['key']][3]; ?>" />
+
+                  </div>
+                </div>
+              </div>
+            </form>
+    
+   
+               </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <?php }?>
 </body>
 
 </html>
+
+

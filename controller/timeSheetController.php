@@ -22,11 +22,28 @@ error_reporting(0);
     if ($result->num_rows > 0) {
 
         while($row = $result->fetch_assoc()) {
-			$tempRecords = array($row["date"], $row["clockIn"], $row["clockOut"]);
+			$tempRecords = array($row["date"], $row["clockIn"], $row["clockOut"], $row["clock_id"]);
 			array_push( $timeRecords, $tempRecords );
 
     	}
     } 
-    
+
+    if($_GET['rowId']){
+        $sheetId = $_GET['rowId'];
+        $sql = "DELETE  from clock where clock_id = ".$sheetId;
+        
+         /*  
+         * Excute delete query to delete data from payRoll table and redirect to payRoll page
+         */
+        if ($conn->query($sql) === TRUE) {
+
+            header("Location: ../timeSheet.php?id=".$userId); 
+
+        } else {
+
+            echo "Error: " . $sql . "<br>" . $conn->error;
+
+        }
+    }
 
 ?>
