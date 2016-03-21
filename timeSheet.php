@@ -33,7 +33,13 @@ function convertToHoursMins($time, $format = '%02d:%02d') {
                 <th>Clock-In</th>
                 <th>Clock-Out</th>
                 <th>No Of hour</th>
+                <?php  
+                    if($_SESSION["type"] == "Manager"){
+                ?>
                 <th>Control</th>
+                <?php  
+                   }
+                ?>
               </tr>
             </thead>
             <tbody>
